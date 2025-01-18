@@ -112,52 +112,6 @@ export async function POST(
     await createLog("success", "http", leadId, endpoint.id);
     await incrementLeadCount(params.id);
 
-    // webhook posting -- eventually make this a background job
-    if (endpoint.webhookEnabled && endpoint.webhook) {
-      // Only wait 3 second(s) for a response
-      const webhookController = new AbortController();
-      const webhookTimeoutPromise = new Promise<never>((_, reject) => {
-        setTimeout(async () => {
-          // create a log of the timeout error
-          await createLog("error", "webhook", "Webhook timed out.", params.id);
-          webhookController.abort();
-          reject(new Error("Request timed out"));
-        }, 3000);
-      });
-      const webhookFetchPromise: Promise<Response> = fetch(endpoint.webhook, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(parsedData.data),
-        signal: webhookController.signal,
-      });
-      const webhookResponse = await Promise.race([
-        webhookFetchPromise,
-        webhookTimeoutPromise,
-      ]);
-
-      if (!webhookResponse.ok) {
-        const contentType = webhookResponse.headers.get("Content-Type");
-        let errorData;
-        if (contentType && contentType.includes("application/json")) {
-          errorData = await webhookResponse.json();
-        } else if (contentType && contentType.includes("text")) {
-          errorData = await webhookResponse.text();
-        } else {
-          errorData = "Received non-text response";
-        }
-        await createLog("error", "webhook", errorData, params.id);
-      } else {
-        createLog(
-          "success",
-          "webhook",
-          `${endpoint.webhook} -> Webhook successful`,
-          params.id
-        );
-      }
-    }
-
     return NextResponse.json({ success: true, id: leadId });
   } catch (error: unknown) {
     await createLog("error", "http", getErrorMessage(error), params.id);
@@ -252,51 +206,6 @@ export async function GET(
 
     await createLog("success", "http", leadId, endpoint.id);
     await incrementLeadCount(params.id);
-
-    // webhook posting -- eventually make this a background job
-    if (endpoint.webhookEnabled && endpoint.webhook) {
-      // Only wait 3 second(s) for a response
-      const webhookController = new AbortController();
-      const webhookTimeoutPromise = new Promise<never>((_, reject) => {
-        setTimeout(async () => {
-          await createLog("error", "webhook", "Webhook timed out.", params.id);
-          webhookController.abort();
-          reject(new Error("Request timed out"));
-        }, 3000);
-      });
-      const webhookFetchPromise: Promise<Response> = fetch(endpoint.webhook, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(parsedData.data),
-        signal: webhookController.signal,
-      });
-      const webhookResponse = await Promise.race([
-        webhookFetchPromise,
-        webhookTimeoutPromise,
-      ]);
-
-      if (!webhookResponse.ok) {
-        const contentType = webhookResponse.headers.get("Content-Type");
-        let errorData;
-        if (contentType && contentType.includes("application/json")) {
-          errorData = await webhookResponse.json();
-        } else if (contentType && contentType.includes("text")) {
-          errorData = await webhookResponse.text();
-        } else {
-          errorData = "Received non-text response";
-        }
-        await createLog("error", "webhook", errorData, params.id);
-      } else {
-        createLog(
-          "success",
-          "webhook",
-          `${endpoint.webhook} -> Webhook successful`,
-          params.id
-        );
-      }
-    }
 
     return NextResponse.redirect(
       new URL(endpoint?.successUrl || referer || "/success")

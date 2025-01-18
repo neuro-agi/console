@@ -119,4 +119,4 @@ type ServerActionFunction = (
   formData: FormData
 ) => Promise<{ error: string } | undefined>;
 
-type LogPostType = "http" | "form" | "webhook" | "email";
+type LogPostType = "http" | "form" | "email";
