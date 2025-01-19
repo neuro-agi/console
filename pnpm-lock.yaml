@@ -164,9 +164,6 @@ importers:
       pg:
         specifier: ^8.16.0
         version: 8.16.0
-      posthog-js:
-        specifier: ^1.248.1
-        version: 1.248.1
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -3895,17 +3892,6 @@ packages:
 
   postgres-range@1.1.4:
     resolution: {integrity: sha512-i/hbxIE9803Alj/6ytL7UHQxRvZkI9O4Sy+J3HGc4F4oo/2eQAjTSNJ0bfxyse3bH0nuVesCk+3IRLaMtG3H6w==}
-
-  posthog-js@1.248.1:
-    resolution: {integrity: sha512-2KBbvvLbiNqQdoEgjczZJ7im5QT8zi0Q29a8AmfXs0UGyaYxmgqPCrE1elQmGBuAm1S3T+Xw2D6Ff0VQPXE6Rw==}
-    peerDependencies:
-      '@rrweb/types': 2.0.0-alpha.17
-      rrweb-snapshot: 2.0.0-alpha.17
-    peerDependenciesMeta:
-      '@rrweb/types':
-        optional: true
-      rrweb-snapshot:
-        optional: true
 
   preact-render-to-string@5.2.3:
     resolution: {integrity: sha512-aPDxUn5o3GhWdtJtW0svRC2SS/l8D9MAgo2+AWml+BhDImb27ALf04Q2d+AHqUUOc6RdSXFIBVa2gxzgMKgtZA==}
@@ -8142,13 +8128,6 @@ snapshots:
   postgres-interval@3.0.0: {}
 
   postgres-range@1.1.4: {}
-
-  posthog-js@1.248.1:
-    dependencies:
-      core-js: 3.42.0
-      fflate: 0.4.8
-      preact: 10.26.8
-      web-vitals: 4.2.4
 
   preact-render-to-string@5.2.3(preact@10.11.3):
     dependencies:

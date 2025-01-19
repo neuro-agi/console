@@ -7,7 +7,6 @@ import { ThemeProvider } from "@/providers/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 
 import Nav from "@/components/parts/nav";
-import { PostHogProvider } from "@/components/providers/post-hog/post-hog-provider";
 
 const font = Inter({ subsets: ["latin"] });
 
@@ -33,13 +32,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <PostHogProvider>
-            <Nav />
-            <main className="py-4 pr-4 pl-4 sm:pl-0 flex flex-col gap-4 min-h-screen">
-              {children}
-            </main>
-            <Toaster />
-          </PostHogProvider>
+          <Nav />
+          <main className="py-4 pr-4 pl-4 sm:pl-0 flex flex-col gap-4 min-h-screen">
+            {children}
+          </main>
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>
