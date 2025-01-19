@@ -3,6 +3,8 @@ import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import { db } from "../db";
 import type { NextAuthConfig } from "next-auth";
 import { User } from "next-auth";
+import Credentials from "next-auth/providers/credentials";
+import { getUserByEmail } from "../data/users";
 
 declare module "next-auth" {
   interface Session extends User {
@@ -17,7 +19,34 @@ export const config = {
   session: {
     strategy: "jwt",
   },
-  providers: [],
+  providers: [
+    Credentials({
+      async authorize(credentials) {
+        console.log("Attempting to authorize with credentials:", credentials);
+        if (!credentials.email || !credentials.password) {
+          console.log("Missing email or password");
+          return null;
+        }
+        const user = await getUserByEmail(credentials.email as string);
+        console.log("User found in database:", user);
+
+        if (!user || !user.password) {
+          console.log("User not found or user has no password");
+          return null;
+        }
+
+        const passwordMatch = user.password === credentials.password;
+        console.log("Password match:", passwordMatch);
+
+        if (!passwordMatch) {
+          console.log("Password does not match");
+          return null;
+        }
+
+        return { id: user.id, email: user.email };
+      },
+    }),
+  ],
   callbacks: {
     session({ session, token }) {
       session.user.id = token.id as string;
@@ -35,7 +64,6 @@ export const config = {
   },
   pages: {
     signIn: "/login",
-    verifyRequest: "/check-email",
   },
 } satisfies NextAuthConfig;
 

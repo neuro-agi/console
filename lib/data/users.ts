@@ -6,6 +6,28 @@ import { eq, sql } from "drizzle-orm";
 import { authenticatedAction } from "./safe-action";
 
 /**
+ * Get user by email
+ */
+export const getUserByEmail = async (email: string) => {
+  const user = await db.query.users.findFirst({
+    where: eq(users.email, email),
+  });
+  return user;
+};
+
+/**
+ * Create a new user
+ */
+export const createUser = async (data: {
+  email: string;
+  password?: string;
+  name?: string;
+}) => {
+  const newUser = await db.insert(users).values(data).returning();
+  return newUser[0];
+};
+
+/**
  * Increments the lead count for a user
  *
  * Used to track the number of leads a user has received

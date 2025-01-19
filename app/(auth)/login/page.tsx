@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { auth } from "@/lib/auth";
 
-import MagicLinkForm from "@/components/auth/form";
+import AuthForm from "@/components/auth/form";
 import { redirect } from "next/navigation";
 
 export default async function LoginPage() {
@@ -23,7 +23,7 @@ export default async function LoginPage() {
           Login to access your account.
         </p>
         <div className="flex flex-col items-center w-full gap-2">
-          <MagicLinkForm />
+          <AuthForm />
         </div>
       </div>
     </section>

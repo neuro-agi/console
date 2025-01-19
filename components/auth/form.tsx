@@ -1,11 +1,10 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
 import { signIn } from "next-auth/react";
+import { createUser } from "@/lib/data/users";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Mail } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -28,10 +27,7 @@ const formSchema = z.object({
     .min(1, { message: "Required" })
 });
 
-export default function MagicLinkForm() {
-  const searchParams = useSearchParams();
-  const callbackUrl = searchParams?.get("callbackUrl") || "/";
-
+export default function SignupForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -41,7 +37,21 @@ export default function MagicLinkForm() {
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    await signIn("abc", { email: values.email, password: values.password, callbackUrl: callbackUrl });
+    const result = await signIn("credentials", {
+      email: values.email,
+      password: values.password,
+      redirect: false,
+    });
+
+    if (result?.error) {
+      await createUser({ email: values.email, password: values.password });
+      await signIn("credentials", {
+        email: values.email,
+        password: values.password,
+      });
+    } else {
+      window.location.href = "/";
+    }
   };
 
   return (
@@ -82,7 +92,7 @@ export default function MagicLinkForm() {
             className="w-full items-center"
             loading={form.formState.isSubmitting}
           >
-            Sign Up <Mail className="w-4 ml-2" />
+            Sign Up
           </Button>
         </form>
       </Form>      

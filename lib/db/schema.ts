@@ -32,6 +32,7 @@ export const users = pgTable("user", {
   email: text("email").notNull(),
   emailVerified: timestamp("emailVerified", { mode: "date" }),
   image: text("image"),
+  password: text("password"),
   leadCount: integer("leadCount").notNull().default(0),
   plan: planEnum("plan").notNull().default("free"),
   stripeCustomerId: text("stripeCustomerId"),
