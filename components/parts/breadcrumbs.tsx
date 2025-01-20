@@ -31,7 +31,7 @@ export const Breadcrumbs = ({ pageName, isLoading }: { pageName?: string, isLoad
         src={Icon}
         width={24}
         height={24}
-        alt="Router.so Icon"
+        alt="Neuro Agi Icon"
       />
     </Breadcrumb>
   );

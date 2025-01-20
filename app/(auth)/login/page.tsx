@@ -18,7 +18,7 @@ export default async function LoginPage() {
           width={50}
           height={72}
         ></Image>
-        <p className="text-center text-xl">Welcome to router.so</p>
+        <p className="text-center text-xl">Welcome to neuro agi</p>
         <p className="text-center text-muted-foreground">
           Login to access your account.
         </p>

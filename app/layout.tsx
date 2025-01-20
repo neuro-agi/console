@@ -11,9 +11,9 @@ import Nav from "@/components/parts/nav";
 const font = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Router.so | The world's simplest lead router",
+  title: "Neuro Agi | The world's simplest lead router",
   description:
-    "Router.so is the world's simplest lead router. Built for developers, by developers.",
+    "Neuro Agi is the world's simplest lead router. Built for developers, by developers.",
 };
 
 export default function RootLayout({
