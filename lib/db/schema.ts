@@ -7,6 +7,8 @@ import {
   pgEnum,
   boolean,
   jsonb,
+  uuid,
+  doublePrecision,
 } from "drizzle-orm/pg-core";
 import type { AdapterAccount } from "@auth/core/adapters";
 import { init } from "@paralleldrive/cuid2";
@@ -23,22 +25,38 @@ export const planEnum = pgEnum("plan", [
   "enterprise",
 ]);
 
-export const users = pgTable("user", {
-  id: text("id")
-    .primaryKey()
-    .notNull()
-    .$defaultFn(() => crypto.randomUUID()),
+export const users = pgTable("users", {
+  id: text("id").notNull().primaryKey(),
   name: text("name"),
-  email: text("email").notNull(),
+  email: text("email").notNull().unique(),
   emailVerified: timestamp("emailVerified", { mode: "date" }),
   image: text("image"),
-  password: text("password"),
-  leadCount: integer("leadCount").notNull().default(0),
-  plan: planEnum("plan").notNull().default("free"),
-  stripeCustomerId: text("stripeCustomerId"),
-  createdAt: timestamp("createdAt", { withTimezone: true })
-    .notNull()
-    .defaultNow(),
+  createdAt: timestamp("createdAt", { withTimezone: true }).defaultNow(),
+  updatedAt: timestamp("updatedAt", { withTimezone: true }).defaultNow(),
+});
+
+export const reasoningEvents = pgTable('reasoning_events', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  reasoningId: text('reasoning_id').notNull().unique(),
+  userId: text('user_id').notNull(),
+  timestamp: timestamp('timestamp', { withTimezone: true }).defaultNow().notNull(),
+  query: text('query').notNull(),
+  model: text('model').notNull(),
+  stepsRequested: integer('steps_requested').notNull(),
+  latencyMs: integer('latency_ms').notNull(),
+  cost: doublePrecision('cost').notNull(),
+  finalAnswer: text('final_answer').notNull(),
+  chain: jsonb('chain').notNull(), // Store chain as JSONB
+});
+
+export const evaluations = pgTable('evaluations', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  evalId: text('eval_id').notNull().unique(),
+  reasoningId: text('reasoning_id').references(() => reasoningEvents.reasoningId).notNull(),
+  metric: text('metric').notNull(),
+  score: doublePrecision('score').notNull(),
+  explanation: text('explanation').notNull(),
+  timestamp: timestamp('timestamp', { withTimezone: true }).defaultNow().notNull(),
 });
 
 export const accounts = pgTable(
