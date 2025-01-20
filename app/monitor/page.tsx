@@ -1,21 +1,27 @@
 import { Breadcrumbs } from "@/components/parts/breadcrumbs";
 import { Header } from "@/components/parts/header";
 import { PageWrapper } from "@/components/parts/page-wrapper";
-import { MonitorDataTable } from "@/components/groups/monitor/monitor-data-table";
-import { getReasoningEvents } from "@/lib/data/neuro";
+import { getReasoningLogs, getReasoningLogsSummary } from "@/lib/data/monitor";
+import { notFound } from "next/navigation";
+import { DataTable } from "@/components/groups/monitor/data-table";
+import { columns } from "@/components/groups/monitor/columns";
+import { MonitorChart } from "@/components/groups/monitor/chart";
 
 const pageData = {
   name: "Monitor",
-  title: "Neuro Monitor",
-  description: "Monitor your Neuro reasoning events and evaluations.",
+  title: "Monitor",
+  description: "Monitor your reasoning API usage and performance.",
 };
 
 export default async function Page() {
-  const { data: eventsData, serverError: eventsServerError } = await getReasoningEvents();
+  const logs = await getReasoningLogs();
+  const summary = await getReasoningLogsSummary();
 
-  if (eventsServerError) {
-    // Handle error, maybe show a message or redirect
-    return <p>Error loading monitoring data: {eventsServerError}</p>;
+  const logsData = logs?.data;
+  const summaryData = summary;
+
+  if (!logsData || !summaryData) {
+    notFound();
   }
 
   return (
@@ -23,10 +29,10 @@ export default async function Page() {
       <Breadcrumbs pageName={pageData?.name} />
       <PageWrapper>
         <Header title={pageData?.title}>{pageData?.description}</Header>
-        {/* Overview Cards - To be implemented */}
-        {/* Time-series Charts - To be implemented */}
-        <MonitorDataTable data={eventsData || []} />
-        {/* Evaluation Heatmap / Anomaly Detection - To be implemented */}
+        <MonitorChart data={summaryData} />
+        <div className="mt-8">
+          <DataTable columns={columns} data={logsData} filterColumn="query" />
+        </div>
       </PageWrapper>
     </>
   );

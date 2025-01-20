@@ -35,29 +35,7 @@ export const users = pgTable("users", {
   updatedAt: timestamp("updatedAt", { withTimezone: true }).defaultNow(),
 });
 
-export const reasoningEvents = pgTable('reasoning_events', {
-  id: uuid('id').defaultRandom().primaryKey(),
-  reasoningId: text('reasoning_id').notNull().unique(),
-  userId: text('user_id').notNull(),
-  timestamp: timestamp('timestamp', { withTimezone: true }).defaultNow().notNull(),
-  query: text('query').notNull(),
-  model: text('model').notNull(),
-  stepsRequested: integer('steps_requested').notNull(),
-  latencyMs: integer('latency_ms').notNull(),
-  cost: doublePrecision('cost').notNull(),
-  finalAnswer: text('final_answer').notNull(),
-  chain: jsonb('chain').notNull(), // Store chain as JSONB
-});
 
-export const evaluations = pgTable('evaluations', {
-  id: uuid('id').defaultRandom().primaryKey(),
-  evalId: text('eval_id').notNull().unique(),
-  reasoningId: text('reasoning_id').references(() => reasoningEvents.reasoningId).notNull(),
-  metric: text('metric').notNull(),
-  score: doublePrecision('score').notNull(),
-  explanation: text('explanation').notNull(),
-  timestamp: timestamp('timestamp', { withTimezone: true }).defaultNow().notNull(),
-});
 
 export const accounts = pgTable(
   "account",
@@ -103,61 +81,26 @@ export const verificationTokens = pgTable(
   })
 );
 
-export const endpoints = pgTable("endpoint", {
-  id: text("id")
-    .$defaultFn(() => createId())
-    .notNull()
-    .primaryKey(),
+export const reasoningLogs = pgTable("reasoning_logs", {
+  id: uuid("id").defaultRandom().primaryKey(),
   userId: text("userId")
     .notNull()
     .references(() => users.id, { onDelete: "cascade" }),
-  name: text("name").notNull(),
-  schema: jsonb("schema")
-    .$type<{ key: string; value: ValidationType }[]>()
-    .notNull(),
-  enabled: boolean("enabled").default(true).notNull(),
-  webhookEnabled: boolean("webhookEnabled").default(false).notNull(),
-  emailNotify: boolean("emailNotify").default(false).notNull(),
-  webhook: text("webhook"),
-  formEnabled: boolean("formEnabled").default(false).notNull(),
-  successUrl: text("successUrl"),
-  failUrl: text("failUrl"),
-  token: text("token"),
-  createdAt: timestamp("createdAt", { mode: "date" }).notNull(),
-  updatedAt: timestamp("updatedAt", { mode: "date" }).notNull(),
+  createdAt: timestamp("createdAt", { withTimezone: true }).defaultNow(),
+  query: text("query").notNull(),
+  response: jsonb("response").notNull(),
+  latency: integer("latency").notNull(),
+  cost: doublePrecision("cost").notNull(),
 });
 
-export const leads = pgTable("lead", {
-  id: text("id")
-    .$defaultFn(() => createId())
+export const evaluations = pgTable("evaluations", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  createdAt: timestamp("createdAt", { withTimezone: true }).defaultNow(),
+  logId: uuid("logId")
     .notNull()
-    .primaryKey(),
-  endpointId: text("endpointId")
-    .notNull()
-    .references(() => endpoints.id, { onDelete: "cascade" }),
-  data: jsonb("data").$type<{ [key: string]: any }>().notNull(),
-  createdAt: timestamp("createdAt", { mode: "date" }).notNull(),
-  updatedAt: timestamp("updatedAt", { mode: "date" }).notNull(),
+    .references(() => reasoningLogs.id, { onDelete: "cascade" }),
+  score: integer("score").notNull(),
+  comment: text("comment"),
 });
 
-export const logTypeEnum = pgEnum("logType", ["success", "error"]);
-export const logPostTypeEnum = pgEnum("logPostType", [
-  "http",
-  "form",
-  "webhook",
-  "email",
-]);
 
-export const logs = pgTable("log", {
-  id: text("id")
-    .$defaultFn(() => createId())
-    .notNull()
-    .primaryKey(),
-  endpointId: text("endpointId")
-    .notNull()
-    .references(() => endpoints.id, { onDelete: "cascade" }),
-  type: logTypeEnum("type").notNull(),
-  postType: logPostTypeEnum("postType").notNull(),
-  message: jsonb("message").$type<Record<string, any> | unknown>().notNull(),
-  createdAt: timestamp("createdAt", { mode: "date" }).notNull(),
-});

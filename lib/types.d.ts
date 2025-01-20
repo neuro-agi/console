@@ -42,54 +42,7 @@ type ValidationType =
   | "url"
   | "zip_code";
 
-/**
- * Row type for the main dashboard data on /dashboard route
- */
-type LeadAndErrorCountResults = {
-  date: string;
-  leads: number;
-  errors: number;
-}[];
 
-/**
- * Represents a mapping between keys of type `GeneralSchema["key"]`
- * and the return types of the corresponding validation functions
- * from the `validations` object.
- */
-type SchemaToZodMap = {
-  [P in GeneralSchema["key"]]: ReturnType<
-    (typeof validations)[GeneralSchema["value"]]
-  >;
-};
-
-/**
- * Type for fetched logs
- *
- * includes attributes of the 'endpoint' db model
- */
-type LogRow = {
-  id: string;
-  type: "success" | "error";
-  message: Record<string, any> | unknown;
-  endpoint: string;
-  endpointId: string;
-  createdAt: Date;
-};
-
-/**
- * Type for fetched leads
- *
- * includes attributes of the 'endpoint' db model
- */
-type LeadRow = {
-  id: string;
-  data: { [key: string]: any };
-  schema?: { key: string; value: ValidationType }[];
-  createdAt: Date;
-  updatedAt: Date;
-  endpointId: string;
-  endpoint?: string;
-};
 
 /**
  * Represents a log message.
@@ -119,4 +72,4 @@ type ServerActionFunction = (
   formData: FormData
 ) => Promise<{ error: string } | undefined>;
 
-type LogPostType = "http" | "form" | "email";
+

@@ -7,19 +7,11 @@ import { authenticatedAction } from "./safe-action";
 import {
   getUserByEmail,
   createUser,
-  incrementLeadCount,
-  getLeadCount,
-  getUserPlan,
-  clearLeadCount,
 } from "./users-queries";
 
 export {
   getUserByEmail,
   createUser,
-  incrementLeadCount,
-  getLeadCount,
-  getUserPlan,
-  clearLeadCount,
 };
 
 /**

@@ -1,13 +1,7 @@
 import type { NextRequest } from "next/server";
-import { clearLeadCount } from "@/lib/data/users";
 
 /**
- * Cron job to clear lead count run through Vercel
- *
- * This job runs on the first of every month UTC time
- * CRON trigger -> 1 0 1 * *
- * This is not needed for the self-hosted version of the app
- * Authenticated with a secret key -> https://vercel.com/docs/cron-jobs/manage-cron-jobs#securing-cron-jobs
+ * Cron job placeholder
  */
 export async function GET(request: NextRequest) {
   const authHeader = request.headers.get("authorization");
@@ -17,7 +11,5 @@ export async function GET(request: NextRequest) {
     });
   }
 
-  await clearLeadCount();
-
-  return Response.json({ success: true });
+  return Response.json({ success: true, message: "No action taken." });
 }

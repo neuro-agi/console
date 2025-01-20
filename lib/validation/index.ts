@@ -108,12 +108,6 @@ export const validateAndParseData = (
     [x: string]: any;
   }
 > => {
-  const EndpointZodSchema = z.object(dynamicSchema);
-
-  Object.keys(dynamicSchema).forEach((key) => {
-    const validation = dynamicSchema[key];
-    console.log(`Field: ${key}, Validation: ${validation._def.typeName}`);
-  });
-
-  return EndpointZodSchema.safeParse(data);
+  const zodSchema = z.object(dynamicSchema);
+  return zodSchema.safeParse(data);
 };

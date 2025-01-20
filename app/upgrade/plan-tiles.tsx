@@ -31,7 +31,6 @@ const plans: PlanProps[] = [
     yearlyStripePriceId: STRIPE_PLANS.lite.yearlyPriceId[ENV],
     features: [
       "1,000 form submissions",
-      "Unlimited endpoints",
       "Unlimited Form Generations",
       "Unlimited Webhooks",
     ],
@@ -46,7 +45,6 @@ const plans: PlanProps[] = [
     yearlyStripePriceId: STRIPE_PLANS.pro.yearlyPriceId[ENV],
     features: [
       "10,000 form submissions",
-      "Unlimited endpoints",
       "Unlimited Form Generations",
       "Unlimited Webhooks",
     ],
@@ -61,7 +59,6 @@ const plans: PlanProps[] = [
     yearlyStripePriceId: STRIPE_PLANS.business.yearlyPriceId[ENV],
     features: [
       "50,000 form submissions",
-      "Unlimited endpoints",
       "Unlimited Form Generations",
       "Unlimited Webhooks",
       "CRM Integrations (Beta)",
@@ -75,7 +72,6 @@ const plans: PlanProps[] = [
     yearlyPrice: "Contact For Pricing",
     features: [
       "Unlimited form submissions",
-      "Unlimited endpoints",
       "Unlimited Form Generations",
       "Unlimited Webhooks",
       "CRM Integrations (Beta)",

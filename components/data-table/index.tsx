@@ -87,11 +87,7 @@ export function DataTable<TData, TValue>({
           />
           <DataTableViewOptions table={table} />
         </div>
-        {createObject && (
-          <Link href="/endpoints/create">
-            <Button variant="outline">Create endpoint</Button>
-          </Link>
-        )}
+        
       </div>
       <div className="rounded-md">
         <Table className="bg-background overflow-x-auto">

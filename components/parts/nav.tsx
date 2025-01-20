@@ -10,19 +10,12 @@ import { LucideProps } from "lucide-react";
 import Logo from "@/public/logo.svg";
 
 // Icon Imports
-import { BarChart, Contact, Layers, LifeBuoy, Disc3, Book, FlaskConical, Scale } from "lucide-react";
+import { BarChart, LifeBuoy, Book, Disc3, Scale } from "lucide-react";
 
 const links = [
   { href: "/", text: "Dashboard", icon: BarChart },
-  { href: "/endpoints", text: "Endpoints", icon: Layers },
-  { href: "/leads", text: "Leads", icon: Contact },
-  { href: "/logs", text: "Logs", icon: Disc3 },
-  { href: "/reasoning", text: "Reasoning", icon: FlaskConical },
   { href: "/monitor", text: "Monitor", icon: Disc3 },
   { href: "/eval", text: "Evaluation", icon: Scale },
-];
-
-const otherLinks = [
   { href: "https://neuro-agi.mintlify.app", text: "Documentation", icon: Book },
   { href: "/support", text: "Support", icon: LifeBuoy },
 ];
@@ -49,11 +42,6 @@ export default async function Nav() {
         <div className="flex flex-col gap-8">
           <div className="grid gap-2">
             {links.map((link) => (
-              <NavLink key={link.href} icon={link.icon} href={link.href}>
-                {link.text}
-              </NavLink>
-            ))}
-            {otherLinks.map((link) => (
               <NavLink key={link.href} icon={link.icon} href={link.href}>
                 {link.text}
               </NavLink>

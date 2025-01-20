@@ -140,7 +140,7 @@ export function RouterForm() {
   });
 
   function onSubmit(data) {
-    console.log(data);
+    // Handle form submission here
   }
 
   return (
@@ -159,7 +159,7 @@ export function RouterForm() {
                 ${getFieldComponent(field)}
               </FormControl>
               <FormDescription>
-                ${`Enter the ${field.key} for the endpoint.`}
+                {`Enter the ${field.key} for the form.`}
               </FormDescription>
               <FormMessage />
             </FormItem>

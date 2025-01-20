@@ -13,8 +13,6 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
-  getFacetedRowModel,
-  getFacetedUniqueValues,
 } from "@tanstack/react-table";
 
 import {
@@ -26,28 +24,31 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-import { DataTablePagination } from "@/components/data-table/pagination";
-import { MonitorDataTableToolbar } from "./monitor-data-table-toolbar";
-import { columns } from "./columns";
+import { Input } from "@/components/ui/input";
 
-interface MonitorDataTableProps<TData, TValue> {
+import { DataTablePagination } from "@/components/data-table/pagination";
+import { DataTableViewOptions } from "@/components/data-table/column-toggle";
+
+interface DataTableProps<TData, TValue> {
+  columns: ColumnDef<TData, TValue>[];
   data: TData[];
+  filterColumn?: string;
 }
 
-export function MonitorDataTable<TData, TValue>({
+export function DataTable<TData, TValue>({
+  columns,
   data,
-}: MonitorDataTableProps<TData, TValue>) {
+  filterColumn,
+}: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
   );
-  const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
-  const [rowSelection, setRowSelection] = React.useState({});
-
+  const [columnVisibility, setColumnVisibility] =
+    React.useState<VisibilityState>({});
   const table = useReactTable({
     data,
     columns,
-    enableRowSelection: true,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     onSortingChange: setSorting,
@@ -55,22 +56,36 @@ export function MonitorDataTable<TData, TValue>({
     onColumnFiltersChange: setColumnFilters,
     getFilteredRowModel: getFilteredRowModel(),
     onColumnVisibilityChange: setColumnVisibility,
-    onRowSelectionChange: setRowSelection,
-    getFacetedRowModel: getFacetedRowModel(),
-    getFacetedUniqueValues: getFacetedUniqueValues(),
     state: {
       sorting,
       columnFilters,
       columnVisibility,
-      rowSelection,
     },
   });
 
   return (
-    <div className="space-y-4">
-      <MonitorDataTableToolbar table={table} />
+    <div>
+      <div className="flex items-center justify-between gap-2 py-4">
+        <div className="flex items-center gap-2">
+          <Input
+            placeholder="Filter..."
+            value={
+              (table
+                .getColumn(filterColumn || "query")
+                ?.getFilterValue() as string) ?? ""
+            }
+            onChange={(event) =>
+              table
+                .getColumn(filterColumn || "query")
+                ?.setFilterValue(event.target.value)
+            }
+            className="max-w-sm"
+          />
+          <DataTableViewOptions table={table} />
+        </div>
+      </div>
       <div className="rounded-md">
-        <Table className="bg-background">
+        <Table className="bg-background overflow-x-auto">
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>

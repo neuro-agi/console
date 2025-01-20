@@ -50,6 +50,13 @@
       "when": 1760840774525,
       "tag": "0006_white_ma_gnuci",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1760952610338,
+      "tag": "0007_famous_vulture",
+      "breakpoints": true
     }
   ]
 }

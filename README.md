@@ -19,55 +19,7 @@ Before starting, ensure you have the following:
 
 After creating your accounts, update your `.env.example` to be `.env.local` for running the application locally. Then, update the keys for each value.
 
-## Neuro Integration
 
-This project integrates with the Neuro API for reasoning, monitoring, and evaluation. The following environment variables are required:
-
-- `NEURO_API_BASE_URL`: The base URL for the Neuro API (e.g., `http://localhost:8080/v1`).
-- `NEURO_API_KEY`: Your API key for authenticating with the Neuro API.
-- `NEXT_PUBLIC_NEURO_API_BASE_URL`: The public-facing base URL for the Neuro API proxy (e.g., `/api/neuro`).
-
-### API Endpoints (cURL Examples)
-
-#### 1. Submit a Reasoning Query
-
-```bash
-curl -X POST \
-  http://localhost:3000/api/neuro/reason \
-  -H 'Content-Type: application/json' \
-  -d '{
-    "query": "What is the capital of France?",
-    "steps": 4,
-    "model": "default",
-    "userId": "user-123"
-  }'
-```
-
-#### 2. Get Reasoning Events
-
-```bash
-curl -X GET \
-  "http://localhost:3000/api/neuro/monitor/events?limit=10&offset=0&userId=user-123"
-```
-
-#### 3. Get Detailed Reasoning Event
-
-```bash
-curl -X GET \
-  "http://localhost:3000/api/neuro/monitor/reasoning/{reasoningId}"
-```
-
-#### 4. Trigger Evaluation
-
-```bash
-curl -X POST \
-  http://localhost:3000/api/neuro/eval \
-  -H 'Content-Type: application/json' \
-  -d '{
-    "reasoningId": "{reasoningId}",
-    "metrics": ["faithfulness", "safety"]
-  }'
-```
 
 ## Step-by-Step Instructions
 
