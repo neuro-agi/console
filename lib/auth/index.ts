@@ -4,7 +4,7 @@ import { db } from "../db";
 import type { NextAuthConfig } from "next-auth";
 import { User } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import { getUserByEmail } from "../data/users";
+import { getUserByEmail } from "../data/users-queries";
 
 declare module "next-auth" {
   interface Session extends User {

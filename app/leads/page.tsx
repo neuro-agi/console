@@ -7,6 +7,8 @@ import { DataTable } from "@/components/groups/leads/data-table";
 import { columns } from "@/components/groups/leads/columns";
 import { PageWrapper } from "@/components/parts/page-wrapper";
 
+export const dynamic = 'force-dynamic';
+
 const pageData = {
   name: "Leads",
   title: "Leads",
