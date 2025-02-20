@@ -20,18 +20,14 @@ export default async function Page() {
   const logsData = logs?.data;
   const summaryData = summary;
 
-  if (!logsData || !summaryData) {
-    notFound();
-  }
-
   return (
     <>
       <Breadcrumbs pageName={pageData?.name} />
       <PageWrapper>
         <Header title={pageData?.title}>{pageData?.description}</Header>
-        {/* <MonitorChart data={summaryData} /> */}
+        <MonitorChart data={(summaryData as any)} />
         <div className="mt-8">
-          <DataTable columns={columns} data={logsData} filterColumn="query" />
+          <DataTable columns={columns} data={(logsData as any)} filterColumn="query" />
         </div>
       </PageWrapper>
     </>

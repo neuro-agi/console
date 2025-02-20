@@ -20,18 +20,14 @@ export default async function Page() {
 
   const unevaluatedLogsData = unevaluatedLogs?.data;
   const evaluationsData = evaluations?.data;
-  const summaryData = summary?.data;
-
-  if (!unevaluatedLogsData || !evaluationsData || !summaryData) {
-    notFound();
-  }
+  const summaryData = summary!.data;
 
   return (
     <>
       <Breadcrumbs pageName={pageData?.name} />
       <PageWrapper>
         <Header title={pageData?.title}>{pageData?.description}</Header>
-        <EvalChart data={summaryData} />
+        <EvalChart data={summaryData!} />
         <div className="mt-8">
           <h2 className="text-lg font-semibold mb-4">Unevaluated Logs</h2>
           <DataTable columns={unevaluatedColumns} data={unevaluatedLogsData || []} filterColumn="query" />
