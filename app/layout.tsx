@@ -6,7 +6,8 @@ import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 
-import Nav from "@/components/parts/nav";
+import LayoutWrapper from "@/components/layout-wrapper";
+import Nav from "@/components/parts/nav"; // Import Nav
 
 const font = Inter({ subsets: ["latin"] });
 
@@ -24,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${font.className} flex flex-col-reverse sm:grid sm:overflow-hidden sm:h-screen sm:w-screen sm:grid-cols-[256px,1fr]`}
+        className={`${font.className} flex flex-col-reverse`}
       >
         <ThemeProvider
           attribute="class"
@@ -32,11 +33,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Nav />
-          <main className="py-4 pr-4 pl-4 sm:pl-0 flex flex-col gap-4 min-h-screen">
-            {children}
-          </main>
-          <Toaster />
+          <LayoutWrapper navComponent={<Nav />}>{children}</LayoutWrapper>
         </ThemeProvider>
       </body>
     </html>

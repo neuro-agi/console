@@ -63,7 +63,7 @@ export const config = {
     },
   },
   pages: {
-    signIn: "/login",
+    signIn: "/landing",
   },
 } satisfies NextAuthConfig;
 
