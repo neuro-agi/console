@@ -27,10 +27,8 @@ CREATE TABLE IF NOT EXISTS "users" (
 	CONSTRAINT "users_email_unique" UNIQUE("email")
 );
 --> statement-breakpoint
-DROP TABLE "endpoint";--> statement-breakpoint
-DROP TABLE "lead";--> statement-breakpoint
-DROP TABLE "log";--> statement-breakpoint
-DROP TABLE "user";--> statement-breakpoint
+DROP TABLE "log" CASCADE;--> statement-breakpoint
+DROP TABLE "user" CASCADE;--> statement-breakpoint
 ALTER TABLE "account" DROP CONSTRAINT "account_userId_user_id_fk";
 --> statement-breakpoint
 ALTER TABLE "session" DROP CONSTRAINT "session_userId_user_id_fk";
