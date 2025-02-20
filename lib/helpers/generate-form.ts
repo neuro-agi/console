@@ -1,8 +1,7 @@
 /**
- * Generates a Shadcn form based on the provided schema and URL.
+ * Generates a Shadcn form based on the provided schema.
  *
  * @param schema - The schema defining the form fields.
- * @param url - The URL to submit the form data to.
  * @returns The generated Shadcn form as a string.
  */
 export const generateShadcnForm = (schema: GeneralSchema[]): string => {
@@ -46,7 +45,6 @@ export const generateShadcnForm = (schema: GeneralSchema[]): string => {
     if (field.value === "boolean") {
       return `
         <Switch
-          className="flex"
           checked={field.value}
           onCheckedChange={field.onChange}
         />
@@ -54,9 +52,9 @@ export const generateShadcnForm = (schema: GeneralSchema[]): string => {
     } else if (field.value === "date") {
       return `
         <Popover>
-          <PopoverTrigger className="flex" asChild>
+          <PopoverTrigger asChild>
             <Button
-              variant={"outline"}
+              variant="outline"
               className={cn(
                 "w-[280px] justify-start text-left font-normal",
                 !field.value && "text-muted-foreground"
@@ -80,8 +78,8 @@ export const generateShadcnForm = (schema: GeneralSchema[]): string => {
       return `
         <Input
           placeholder="${field.key}"
+          type="${field.value === "number" ? "number" : "text"}"
           {...field}
-          type="${field.value}"
         />
       `;
     }
@@ -98,27 +96,10 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { format } from "date-fns";
 import { Calendar as CalendarIcon } from "lucide-react";
-
 import { Button } from "@/components/ui/button";
-${
-  hasBooleanField
-    ? `
-import { Switch } from "@/components/ui/switch";
-`
-    : ""
-}
-${
-  hasDateField
-    ? `
-import { Calendar } from "@/components/ui/calendar";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-`
-    : ""
-}
+${hasBooleanField ? `import { Switch } from "@/components/ui/switch";` : ""}
+${hasDateField ? `import { Calendar } from "@/components/ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";` : ""}
 import {
   Form,
   FormControl,
@@ -126,7 +107,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
+  FormMessage
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
@@ -137,10 +118,13 @@ const formSchema = z.object({
 export function RouterForm() {
   const form = useForm({
     resolver: zodResolver(formSchema),
+    defaultValues: {
+      ${schema.map((field) => `${field.key}: ""`).join(",\n      ")}
+    }
   });
 
   function onSubmit(data) {
-    // Handle form submission here
+    console.log(data);
   }
 
   return (
@@ -159,15 +143,14 @@ export function RouterForm() {
                 ${getFieldComponent(field)}
               </FormControl>
               <FormDescription>
-                {`Enter the ${field.key} for the form.`}
+                { \`Enter the ${field.key} for the form.\` }
               </FormDescription>
               <FormMessage />
             </FormItem>
           )}
-        />
-        `
+        />`
           )
-          .join("")}
+          .join("\n")}
         <Button type="submit">Submit</Button>
       </form>
     </Form>
