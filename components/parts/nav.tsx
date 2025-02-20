@@ -14,7 +14,7 @@ import { BarChart, LifeBuoy, Book, Disc3, Scale } from "lucide-react";
 
 const links = [
   { href: "/", text: "Dashboard", icon: BarChart },
-  { href: "/monitor", text: "Monitor", icon: Disc3 },
+  // { href: "/monitor", text: "Monitor", icon: Disc3 },
   { href: "/eval", text: "Evaluation", icon: Scale },
   { href: "https://neuro-agi.mintlify.app", text: "Documentation", icon: Book },
   { href: "/support", text: "Support", icon: LifeBuoy },
