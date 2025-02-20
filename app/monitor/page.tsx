@@ -29,7 +29,7 @@ export default async function Page() {
       <Breadcrumbs pageName={pageData?.name} />
       <PageWrapper>
         <Header title={pageData?.title}>{pageData?.description}</Header>
-        <MonitorChart data={summaryData} />
+        {/* <MonitorChart data={summaryData} /> */}
         <div className="mt-8">
           <DataTable columns={columns} data={logsData} filterColumn="query" />
         </div>

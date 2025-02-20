@@ -22,6 +22,6 @@ export const createUser = async (data: {
   password?: string;
   name?: string;
 }) => {
-  const newUser = await db.insert(users).values(data).returning();
+  const newUser = await db.insert(users).values((data as any)).returning();
   return newUser[0];
 };

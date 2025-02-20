@@ -30,12 +30,12 @@ export const config = {
         const user = await getUserByEmail(credentials.email as string);
         console.log("User found in database:", user);
 
-        if (!user || !user.password) {
+        if (!user || !(user as any).password) {
           console.log("User not found or user has no password");
           return null;
         }
 
-        const passwordMatch = user.password === credentials.password;
+        const passwordMatch = (user as any).password === credentials.password;
         console.log("Password match:", passwordMatch);
 
         if (!passwordMatch) {

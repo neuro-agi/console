@@ -23,7 +23,7 @@ export {
 export const getUsageForUser = authenticatedAction.action(
   async ({ ctx: { userId } }) => {
     const result = await db
-      .select({ leadCount: users.leadCount, plan: users.plan })
+      .select({ leadCount: (users as any).leadCount, plan: (users as any).plan })
       .from(users)
       .where(eq(users.id, userId));
 

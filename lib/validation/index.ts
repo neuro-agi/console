@@ -84,7 +84,7 @@ export const generateDynamicSchema = (
   return schema.reduce<z.ZodRawShape>((acc, { key, value }) => {
     const validation = validations[value];
     if (validation) {
-      acc[key as keyof SchemaToZodMap] = validation;
+      acc[key] = validation;
     }
     return acc;
   }, {});

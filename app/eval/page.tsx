@@ -20,7 +20,7 @@ export default async function Page() {
 
   const unevaluatedLogsData = unevaluatedLogs?.data;
   const evaluationsData = evaluations?.data;
-  const summaryData = summary;
+  const summaryData = summary?.data;
 
   if (!unevaluatedLogsData || !evaluationsData || !summaryData) {
     notFound();

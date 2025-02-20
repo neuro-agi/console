@@ -11,10 +11,10 @@ export const getUnevaluatedLogs = authenticatedAction.action(
       .select({ logId: evaluations.logId })
       .from(evaluations);
 
-    const logs = await db
+    const logs = (await db
       .select()
       .from(reasoningLogs)
-      .where(eq(reasoningLogs.userId, userId))
+      .where(eq(reasoningLogs.userId, userId)) as any)
       .where(
         notInArray(
           reasoningLogs.id,
