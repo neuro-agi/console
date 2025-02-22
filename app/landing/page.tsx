@@ -1,7 +1,7 @@
 'use client';
 
-import React, { createContext, useContext, useEffect, useState } from 'react';
-import { Link2, Lock, AlertCircle, LayoutDashboard, Webhook, FileCode, Asterisk, Check, Mail, Bell, RotateCcw, Sun, Moon } from 'lucide-react';
+import React from 'react';
+import { Link2, Lock, AlertCircle, LayoutDashboard, Webhook, FileCode, Asterisk, Check, Mail, Bell, RotateCcw } from 'lucide-react';
 import Image from 'next/image';
 
 
@@ -360,25 +360,6 @@ function Footer() {
         </div>
       </div>
     </footer>
-  );
-}
-
-// --- ThemeToggle Component (from src/components/ThemeToggle.tsx) ---
-function ThemeToggle() {
-  const { theme, toggleTheme } = useTheme();
-
-  return (
-    <button
-      onClick={toggleTheme}
-      className="fixed bottom-6 right-6 p-3 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-all hover:scale-105 z-50"
-      aria-label="Toggle theme"
-    >
-      {theme === 'light' ? (
-        <Moon className="w-5 h-5 text-gray-900 dark:text-gray-100" strokeWidth={2} />
-      ) : (
-        <Sun className="w-5 h-5 text-gray-900 dark:text-gray-100" strokeWidth={2} />
-      )}
-    </button>
   );
 }
 
