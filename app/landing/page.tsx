@@ -2,6 +2,7 @@
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { Link2, Lock, AlertCircle, LayoutDashboard, Webhook, FileCode, Asterisk, Check, Mail, Bell, RotateCcw, Sun, Moon } from 'lucide-react';
+import Image from 'next/image';
 
 
 // --- Header Component (from src/components/Header.tsx) ---
@@ -59,10 +60,12 @@ function Hero() {
 
       <div className="w-full rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-blue-400/30 via-purple-400/30 to-orange-400/30 dark:from-blue-600/20 dark:via-purple-600/20 dark:to-orange-600/20 p-[2px]">
         <div className="bg-gradient-to-br from-slate-600 via-purple-500/50 to-orange-400/50 dark:from-slate-800 dark:via-purple-800/50 dark:to-orange-800/50 rounded-2xl p-8">
-          <img
+          <Image
             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 700'%3E%3Crect fill='%23ffffff' width='1200' height='700' rx='12'/%3E%3C/svg%3E"
             alt="Router.so Dashboard"
             className="w-full rounded-lg shadow-2xl dark:opacity-90"
+            width={1200}
+            height={700}
           />
         </div>
       </div>
@@ -75,7 +78,7 @@ const features = [
   {
     icon: Link2,
     title: 'Intelligent API Endpoints',
-    description: 'Create custom API endpoints that leverage Neuro AGI\'s reasoning capabilities to process and respond to complex queries.',
+    description: 'Create custom API endpoints that leverage Neuro AGIs reasoning capabilities to process and respond to complex queries.',
   },
   {
     icon: Lock,
@@ -95,12 +98,12 @@ const features = [
   {
     icon: Webhook,
     title: 'Automated Decision Workflows',
-    description: 'Integrate Neuro AGI\'s reasoning into your existing workflows via webhooks. Automate complex decision-making processes seamlessly.',
+    description: 'Integrate Neuro AGIs reasoning into your existing workflows via webhooks. Automate complex decision-making processes seamlessly.',
   },
   {
     icon: FileCode,
     title: 'Code Generation for Reasoning',
-    description: 'Generate code snippets and templates for integrating Neuro AGI\'s reasoning APIs into various programming languages and frameworks.',
+    description: 'Generate code snippets and templates for integrating Neuro AGIs reasoning APIs into various programming languages and frameworks.',
   },
 ];
 
@@ -206,7 +209,7 @@ function Pricing() {
           Flexible Pricing for Every Scale
         </h2>
         <p className="text-[18px] text-gray-500 dark:text-gray-400 mb-16">
-          Choose the plan that best fits your application's reasoning needs.
+          Choose the plan that best fits your applications reasoning needs.
         </p>
 
         <div className="space-y-6">
