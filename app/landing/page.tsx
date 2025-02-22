@@ -12,9 +12,9 @@ function Header() {
   return (
     <header className="border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-background/20">
       <div className="max-w-[1200px] mx-auto px-6 py-6 flex items-center justify-between">
-        <div className="flex items-center gap-2">
+        <div className="flex justify-center items-center gap-2">
           <Asterisk className="w-8 h-8 text-gray-900 dark:text-gray-100" strokeWidth={2.5} />
-          <span className="text-[28px] font-normal tracking-tight text-gray-900 dark:text-gray-100">router.so</span>
+          <span className="text-[28px] mt-2 font-normal tracking-tight text-gray-900 dark:text-gray-100">Neuro AGI</span>
         </div>
       </div>
     </header>
