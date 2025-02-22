@@ -41,11 +41,11 @@ function Hero() {
       </div>
 
       <h1 className="text-[56px] leading-[1.15] font-normal tracking-tight text-gray-900 dark:text-gray-100 mb-8 max-w-[900px]">
-        The Open Source Option to Manage your Forms and Capture Leads.
+        Neuro AGI: Reasoning as a Service for Your Applications.
       </h1>
 
       <p className="text-[20px] leading-[1.6] text-gray-600 dark:text-gray-400 mb-12 max-w-[800px]">
-        Router.so is headless form handling and lead routing for marketing-minded developers.
+        Integrate advanced reasoning capabilities into your projects with ease. Neuro AGI provides powerful, scalable, and flexible AI reasoning APIs.
       </p>
 
       <div className="flex gap-4 mb-20">
@@ -53,7 +53,7 @@ function Hero() {
           Get Started
         </button>
         <button className="px-6 py-3 text-[15px] border border-gray-200 dark:border-gray-800 rounded-lg hover:border-gray-300 dark:hover:border-gray-700 transition-colors text-gray-900 dark:text-gray-100">
-          See Pricing
+          View Documentation
         </button>
       </div>
 
@@ -74,33 +74,33 @@ function Hero() {
 const features = [
   {
     icon: Link2,
-    title: 'Endpoint Creation',
-    description: 'Easily create custom endpoints for your forms. Streamline data collection with tailored submission points.',
+    title: 'Intelligent API Endpoints',
+    description: 'Create custom API endpoints that leverage Neuro AGI\'s reasoning capabilities to process and respond to complex queries.',
   },
   {
     icon: Lock,
-    title: 'Custom Schema',
-    description: 'Define and validate your data with custom schemas. Ensure data integrity and structure for each form submission.',
+    title: 'Custom Reasoning Models',
+    description: 'Define and integrate your own reasoning models or utilize pre-built ones to tailor AI logic to your specific needs.',
   },
   {
     icon: AlertCircle,
-    title: 'Error Tracking',
-    description: 'Monitor and manage errors in real-time. Quickly identify and resolve issues to maintain smooth form operations.',
+    title: 'Reasoning Traceability & Debugging',
+    description: 'Monitor and debug the reasoning process in real-time. Understand how decisions are made and quickly identify logical inconsistencies.',
   },
   {
     icon: LayoutDashboard,
-    title: 'Dashboard',
-    description: 'Visualize and analyze your form data with intuitive charts and graphs. Gain insights to optimize your lead generation.',
+    title: 'Performance Dashboard',
+    description: 'Visualize and analyze the performance of your reasoning models with intuitive charts and graphs. Gain insights to optimize AI efficiency.',
   },
   {
     icon: Webhook,
-    title: 'Webhook Routing',
-    description: 'Route form submissions to external services seamlessly. Integrate with your existing tools and automate workflows.',
+    title: 'Automated Decision Workflows',
+    description: 'Integrate Neuro AGI\'s reasoning into your existing workflows via webhooks. Automate complex decision-making processes seamlessly.',
   },
   {
     icon: FileCode,
-    title: 'Form Generation',
-    description: 'Generate beautiful, responsive forms with Shadcn/ui components. Create professional-looking forms with minimal effort.',
+    title: 'Code Generation for Reasoning',
+    description: 'Generate code snippets and templates for integrating Neuro AGI\'s reasoning APIs into various programming languages and frameworks.',
   },
 ];
 
@@ -109,7 +109,7 @@ function Features() {
     <section className="bg-white dark:bg-background/20 py-24">
       <div className="max-w-[1200px] mx-auto px-6">
         <h2 className="text-[40px] leading-[1.2] font-normal tracking-tight text-gray-900 dark:text-gray-100 mb-16">
-          Out of the Box Features for Forms and Lead Routing
+          Key Features of Neuro AGI Reasoning Service
         </h2>
 
         <div className="space-y-6">
@@ -203,10 +203,10 @@ function Pricing() {
     <section className="bg-white dark:bg-background/20 py-24">
       <div className="max-w-[1200px] mx-auto px-6">
         <h2 className="text-[40px] leading-[1.2] font-normal tracking-tight text-gray-900 dark:text-gray-100 mb-4">
-          Simple Pricing for Powerful Form Handling
+          Flexible Pricing for Every Scale
         </h2>
         <p className="text-[18px] text-gray-500 dark:text-gray-400 mb-16">
-          Choose the plan that fits your needs
+          Choose the plan that best fits your application's reasoning needs.
         </p>
 
         <div className="space-y-6">
@@ -260,27 +260,27 @@ function Pricing() {
 const roadmapItems = [
   {
     icon: Check,
-    title: 'Optional Fields in Forms',
-    subtitle: 'Add flexibility to your forms by including optional fields for additional information.',
-    description: 'This new feature will allow you to create more versatile forms by designating certain fields as optional. Users can choose to fill these fields or leave them blank, providing a better user experience and potentially increasing form completion rates.',
+    title: 'Advanced Reasoning Algorithms',
+    subtitle: 'Implement cutting-edge reasoning algorithms to enhance decision-making capabilities.',
+    description: 'This enhancement will introduce more sophisticated AI algorithms, allowing Neuro AGI to handle even more complex logical deductions and provide more nuanced insights for your applications.',
   },
   {
     icon: Mail,
-    title: 'Share a Lead by Email',
-    subtitle: 'Easily share lead information with team members or clients via email.',
-    description: 'This feature will allow you to quickly distribute lead details to relevant stakeholders. You will be able to customize the email content and choose recipients directly from the platform, streamlining your lead sharing process.',
+    title: 'Reasoning Model Versioning',
+    subtitle: 'Enable version control for your custom reasoning models, allowing for easy iteration and rollback.',
+    description: 'This feature will provide robust versioning for all custom reasoning models, ensuring that you can track changes, experiment with new logic, and revert to previous stable versions with confidence.',
   },
   {
     icon: Bell,
-    title: 'Email Notifications for Leads Received',
-    subtitle: 'Get instant email alerts when new leads are captured through your forms.',
-    description: 'Stay on top of your lead generation efforts with real-time notifications. You will be able to configure alert preferences, ensuring you are always informed about new opportunities without being overwhelmed.',
+    title: 'Real-time Anomaly Detection',
+    subtitle: 'Integrate real-time anomaly detection within reasoning processes to identify unusual patterns or errors.',
+    description: 'This feature will provide instant alerts when Neuro AGI detects anomalies in its reasoning outputs or input data, allowing for proactive intervention and maintaining the integrity of your AI-driven decisions.',
   },
   {
     icon: RotateCcw,
-    title: 'Manually Retry Webhook Attempts',
-    subtitle: 'Resend failed webhook payloads with a simple click, ensuring no lead data is lost.',
-    description: 'This feature will provide a safety net for your integrations. You will have a clear view of failed webhook attempts and the ability to retry them manually, giving you more control over your data flow and reducing the risk of lost leads.',
+    title: 'Multi-modal Reasoning Support',
+    subtitle: 'Expand reasoning capabilities to process and integrate information from various data types, including text, images, and audio.',
+    description: 'This enhancement will allow Neuro AGI to perform reasoning across different modalities, enabling more comprehensive and context-aware decision-making for applications that deal with diverse data sources.',
   }
 ];
 
@@ -289,7 +289,7 @@ function Roadmap() {
     <section className="bg-white dark:bg-background/20 py-24">
       <div className="max-w-[1200px] mx-auto px-6">
         <h2 className="text-[40px] leading-[1.2] font-normal tracking-tight text-gray-900 dark:text-gray-100 mb-16">
-          Router.so Roadmap
+          Neuro AGI Future Enhancements
         </h2>
 
         <div className="space-y-6">
@@ -329,14 +329,14 @@ function Footer() {
         </div>
 
         <p className="text-[18px] text-gray-600 dark:text-gray-400 mb-12 leading-[1.6] max-w-[600px]">
-          We built Router.so to help developers build forms faster and capture leads easier.
+          Neuro AGI provides cutting-edge reasoning capabilities to empower your intelligent applications.
         </p>
 
         <nav className="space-y-3 mb-16">
-          <a href="#" className="block text-[15px] text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400 transition-colors border-b border-gray-900 dark:border-gray-100 pb-1 w-fit">
+          <a href="https://github.com/neuro-agi-project" className="block text-[15px] text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400 transition-colors border-b border-gray-900 dark:border-gray-100 pb-1 w-fit">
             Github
           </a>
-          <a href="#" className="block text-[15px] text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400 transition-colors border-b border-gray-900 dark:border-gray-100 pb-1 w-fit">
+          <a href="https://docs.neuro-agi.com" className="block text-[15px] text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400 transition-colors border-b border-gray-900 dark:border-gray-100 pb-1 w-fit">
             Documentation
           </a>
           <a href="#" className="block text-[15px] text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400 transition-colors border-b border-gray-900 dark:border-gray-100 pb-1 w-fit">
