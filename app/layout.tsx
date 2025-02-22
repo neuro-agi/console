@@ -26,7 +26,7 @@ export default function RootLayout({
 			<body className={`${font.className} flex flex-col-reverse`}>
 				<div style={{ backgroundColor: "#c32148", color: "white", textAlign: "center", padding: "10px", position: "fixed", marginBottom: "10px", top: 0, left: 0, width: "100%", zIndex: 9999 }}>
 					We are shutting down Neuro AGI. Check out the repo{" "}
-					<a href="https://github.com/neuro-agi" style={{ color: "lightblue", textDecoration: "underline" }} target="_blank" rel="noopener noreferrer">
+					<a href="https://github.com/neuro-agi/neuro" style={{ color: "lightblue", textDecoration: "underline" }} target="_blank" rel="noopener noreferrer">
 						here
 					</a>
 					.
