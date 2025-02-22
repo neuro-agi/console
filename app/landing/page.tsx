@@ -4,6 +4,8 @@ import React from 'react';
 import { Link2, Lock, AlertCircle, LayoutDashboard, Webhook, FileCode, Asterisk, Check, Mail, Bell, RotateCcw } from 'lucide-react';
 import Image from 'next/image';
 
+import LandingPageImage from "@/public/landing.webp";
+
 
 // --- Header Component (from src/components/Header.tsx) ---
 function Header() {
@@ -14,9 +16,6 @@ function Header() {
           <Asterisk className="w-8 h-8 text-gray-900 dark:text-gray-100" strokeWidth={2.5} />
           <span className="text-[28px] font-normal tracking-tight text-gray-900 dark:text-gray-100">router.so</span>
         </div>
-        <a href="/login" className="text-[15px] text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors">
-          Login
-        </a>
       </div>
     </header>
   );
@@ -49,20 +48,11 @@ function Hero() {
         Integrate advanced reasoning capabilities into your projects with ease. Neuro AGI provides powerful, scalable, and flexible AI reasoning APIs.
       </p>
 
-      <div className="flex gap-4 mb-20">
-        <button className="px-6 py-3 text-[15px] text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors">
-          Get Started
-        </button>
-        <button className="px-6 py-3 text-[15px] border border-gray-200 dark:border-gray-800 rounded-lg hover:border-gray-300 dark:hover:border-gray-700 transition-colors text-gray-900 dark:text-gray-100">
-          View Documentation
-        </button>
-      </div>
-
       <div className="w-full rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-blue-400/30 via-purple-400/30 to-orange-400/30 dark:from-blue-600/20 dark:via-purple-600/20 dark:to-orange-600/20 p-[2px]">
         <div className="bg-gradient-to-br from-slate-600 via-purple-500/50 to-orange-400/50 dark:from-slate-800 dark:via-purple-800/50 dark:to-orange-800/50 rounded-2xl p-8">
           <Image
-            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 700'%3E%3Crect fill='%23ffffff' width='1200' height='700' rx='12'/%3E%3C/svg%3E"
-            alt="Router.so Dashboard"
+            src={LandingPageImage}
+            alt="Dashboard"
             className="w-full rounded-lg shadow-2xl dark:opacity-90"
             width={1200}
             height={700}
@@ -328,7 +318,7 @@ function Footer() {
       <div className="max-w-[1200px] mx-auto px-6">
         <div className="flex items-center gap-2 mb-8">
           <Asterisk className="w-7 h-7 text-gray-900 dark:text-gray-100" strokeWidth={2.5} />
-          <span className="text-[24px] font-normal tracking-tight text-gray-900 dark:text-gray-100">router.so</span>
+          <span className="text-[24px] font-normal tracking-tight text-gray-900 dark:text-gray-100">Neuro Agi</span>
         </div>
 
         <p className="text-[18px] text-gray-600 dark:text-gray-400 mb-12 leading-[1.6] max-w-[600px]">
@@ -339,23 +329,11 @@ function Footer() {
           <a href="https://github.com/neuro-agi-project" className="block text-[15px] text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400 transition-colors border-b border-gray-900 dark:border-gray-100 pb-1 w-fit">
             Github
           </a>
-          <a href="https://docs.neuro-agi.com" className="block text-[15px] text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400 transition-colors border-b border-gray-900 dark:border-gray-100 pb-1 w-fit">
-            Documentation
-          </a>
-          <a href="#" className="block text-[15px] text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400 transition-colors border-b border-gray-900 dark:border-gray-100 pb-1 w-fit">
-            Login / Signup
-          </a>
-          <a href="#" className="block text-[15px] text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400 transition-colors border-b border-gray-900 dark:border-gray-100 pb-1 w-fit">
-            Privacy Policy
-          </a>
-          <a href="#" className="block text-[15px] text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400 transition-colors border-b border-gray-900 dark:border-gray-100 pb-1 w-fit">
-            Terms of Use
-          </a>
         </nav>
 
         <div className="flex items-center justify-between">
           <p className="text-[14px] text-gray-600 dark:text-gray-400">
-            © 9d8. All rights reserved. 2024-present.
+            © All rights reserved.
           </p>
         </div>
       </div>
