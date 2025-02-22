@@ -4,7 +4,7 @@ import React from 'react';
 import { Link2, Lock, AlertCircle, LayoutDashboard, Webhook, FileCode, Asterisk, Check, Mail, Bell, RotateCcw } from 'lucide-react';
 import Image from 'next/image';
 
-import LandingPageImage from "@/public/landing.webp";
+import LandingPageImage from "@/public/landing.png";
 
 
 // --- Header Component (from src/components/Header.tsx) ---
